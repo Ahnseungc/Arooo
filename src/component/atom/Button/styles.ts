@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
+import { MouseEventHandler } from "react";
 
 export interface ButtonLayoutProps {
   buttonType: "Like";
   isFull?: boolean;
+  onClick?: () => void;
 }
 
 export const LikeButtonStyles = css`

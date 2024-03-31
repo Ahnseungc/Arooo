@@ -8,7 +8,7 @@ export const LikeStyles = css`
   color: black;
 `;
 
-export const LikeLayout = styled.p<LikeLayoutProps>`
+export const LikeLayout = styled.div<LikeLayoutProps>`
   border: none;
 
   background-color: none;

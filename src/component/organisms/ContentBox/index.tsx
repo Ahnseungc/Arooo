@@ -3,6 +3,7 @@ import { HTMLProps } from "react";
 import Text from "@/component/atom/Text";
 import Like from "@/component/molecules/Like";
 import { ContentBoxLayout } from "./styles";
+import Link from "next/link";
 
 // export interface LikeProps
 //   extends HTMLProps<HTMLButtonElement>,
@@ -11,7 +12,9 @@ import { ContentBoxLayout } from "./styles";
 const ContentBox: FC<any> = () => {
   return (
     <ContentBoxLayout>
-      <Text TextType="ContentTitle">콘텐츠 타이틀</Text>
+      <Text TextType="ContentTitle">
+        <Link href={"/1"}>콘텐츠 타이틀</Link>
+      </Text>
       <Like TextType="Like" />
     </ContentBoxLayout>
   );

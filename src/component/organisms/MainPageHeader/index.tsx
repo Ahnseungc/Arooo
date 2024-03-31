@@ -10,7 +10,7 @@ import { MainpageHeaderLayout } from "./styles";
 const MainPageHeader: FC<any> = () => {
   return (
     <MainpageHeaderLayout>
-      <Text TextType="MainPageTitle">메인 페이지 헤더</Text>
+      <Text TextType="MainPageTitle">The Arooo Assignment </Text>
     </MainpageHeaderLayout>
   );
 };
