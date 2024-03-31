@@ -4,6 +4,7 @@ import { HTMLProps } from "react";
 import LikeCount from "@/component/atom/LikeCount";
 import Button from "@/component/atom/Button/index";
 import { useState } from "react";
+import { fetcher } from "@/util/fetcher";
 
 export interface LikeProps
   extends HTMLProps<HTMLButtonElement>,

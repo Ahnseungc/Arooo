@@ -9,6 +9,7 @@ export const MainpageHeaderLayout = styled.header`
   height: 10vh;
   position: fixed;
   background-color: white;
+  z-index: 1;
 `;
 
 export const MainpageHeaderHr = styled.hr`
