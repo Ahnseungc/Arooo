@@ -5,6 +5,7 @@ export const MainpageHeaderLayout = styled.header`
   background-color: none;
   display: flex;
   width: 100%;
+
   font-size: 13px;
 `;
 

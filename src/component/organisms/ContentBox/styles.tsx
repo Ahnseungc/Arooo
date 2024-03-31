@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const ContentBoxLayout = styled.section`
+export const ContentBoxLayout = styled.li`
   border: none;
   background-color: none;
   display: flex;
