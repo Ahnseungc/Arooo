@@ -1,33 +1,37 @@
 import styled, { css } from "styled-components";
 
-export interface ContentLayoutProps {
-  TextType: "Text";
+export interface TextLayoutProps {
+  TextType: "MainPageTitle" | "DetailPageTitle" | "ContentTitle";
 }
 
-export const LikeButtonStyles = css`
-  background-color: blue;
+export const MainPageTitleTextStyles = css`
+  color: black;
+  font-size: 20px;
+`;
+export const DetailPageTitleTextStyles = css`
+  color: black;
   font-size: 16px;
-  cursor: pointer;
-
-  &:hover {
-    background: #e7e7e7;
-  }
-
-  &:active {
-    background: #d7d7d7;
-  }
 `;
 
-export const ButtonLayout = styled.button<ButtonLayoutProps>`
+export const ContentTitleTextStyles = css`
+  color: black;
+  font-size: 12px;
+`;
+
+export const TextLayout = styled.h3<TextLayoutProps>`
   border: none;
-  padding: 10px 30px;
-  width: ${({ isFull }) => (isFull ? "100%" : "auto")};
-  ${({ buttonType }) => {
-    switch (buttonType) {
-      case "Like":
-        return LikeButtonStyles;
+  color: black;
+  font-size: 16px;
+  ${({ TextType }) => {
+    switch (TextType) {
+      case "MainPageTitle":
+        return MainPageTitleTextStyles;
+      case "DetailPageTitle":
+        return DetailPageTitleTextStyles;
+      case "ContentTitle":
+        return ContentTitleTextStyles;
     }
   }}
 `;
 
-export default { ButtonLayout };
+export default { TextLayout };
