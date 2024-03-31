@@ -11,6 +11,7 @@ export const MainPageLayout = styled.div`
 export const MainPageList = styled.ul`
   text-decoration: none;
   list-style: none;
+  margin-top: 150px;
 
   & li {
     margin-top: 100px;

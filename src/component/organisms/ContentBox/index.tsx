@@ -13,7 +13,12 @@ const ContentBox: FC<any> = () => {
   return (
     <ContentBoxLayout>
       <Text Margin="0" TextType="ContentTitle">
-        <Link href={"/1"}>콘텐츠 타이틀</Link>
+        <Link
+          href={"/1"}
+          style={{ textDecoration: "none", color: "black", cursor: "pointer" }}
+        >
+          콘텐츠 타이틀
+        </Link>
       </Text>
       <Like TextType="Like" />
     </ContentBoxLayout>
