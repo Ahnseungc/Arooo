@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export interface TextLayoutProps {
   TextType: "MainPageTitle" | "DetailPageTitle" | "ContentTitle";
+  Margin: string;
 }
 
 export const MainPageTitleTextStyles = css`
@@ -22,6 +23,7 @@ export const TextLayout = styled.h3<TextLayoutProps>`
   border: none;
   color: black;
   font-size: 16px;
+  margin: ${({ Margin }) => Margin};
   ${({ TextType }) => {
     switch (TextType) {
       case "MainPageTitle":

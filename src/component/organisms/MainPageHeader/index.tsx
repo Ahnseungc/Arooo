@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { HTMLProps } from "react";
 import Text from "@/component/atom/Text";
-import { MainpageHeaderLayout } from "./styles";
+import { MainpageHeaderLayout, MainpageHeaderHr } from "./styles";
 
 // export interface LikeProps
 //   extends HTMLProps<HTMLButtonElement>,
@@ -10,7 +10,10 @@ import { MainpageHeaderLayout } from "./styles";
 const MainPageHeader: FC<any> = () => {
   return (
     <MainpageHeaderLayout>
-      <Text TextType="MainPageTitle">The Arooo Assignment </Text>
+      <Text TextType="MainPageTitle" Margin="40px 0 0 0">
+        The Arooo Assignment
+      </Text>
+      <MainpageHeaderHr />
     </MainpageHeaderLayout>
   );
 };

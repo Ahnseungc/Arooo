@@ -12,7 +12,7 @@ import Link from "next/link";
 const ContentBox: FC<any> = () => {
   return (
     <ContentBoxLayout>
-      <Text TextType="ContentTitle">
+      <Text Margin="0" TextType="ContentTitle">
         <Link href={"/1"}>콘텐츠 타이틀</Link>
       </Text>
       <Like TextType="Like" />
