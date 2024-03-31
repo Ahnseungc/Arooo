@@ -8,9 +8,9 @@ export interface LikeProps
   extends HTMLProps<HTMLButtonElement>,
     LikeLayoutProps {}
 
-const Like: FC<LikeProps> = () => {
+const Like: FC<LikeProps> = ({ TextType }) => {
   return (
-    <LikeLayout TextType="Like">
+    <LikeLayout TextType={TextType}>
       <LikeCount TextType="LikeCount">좋아요 수</LikeCount>
       <Button buttonType="Like" />
     </LikeLayout>
