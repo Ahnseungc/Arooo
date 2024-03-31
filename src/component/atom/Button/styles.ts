@@ -8,23 +8,39 @@ export interface ButtonLayoutProps {
 }
 
 export const LikeButtonStyles = css`
-  background-color: blue;
-  font-size: 16px;
+  width: 20px;
+  height: 20px;
+  background-color: red;
   cursor: pointer;
+  position: relative;
+  transform: rotate(45deg);
 
-  &:hover {
-    background: #e7e7e7;
+  &::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: -50%;
+    top: 0;
+    border-radius: 50%;
+    background: red;
   }
-
-  &:active {
-    background: #d7d7d7;
+  &::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    top: -50%;
+    left: 0;
+    position: absolute;
+    border-radius: 50%;
+    background: red;
   }
 `;
 
 export const ButtonLayout = styled.button<ButtonLayoutProps>`
   border: none;
-  padding: 10px 30px;
-  width: ${({ isFull }) => (isFull ? "100%" : "auto")};
+
+  /* width: ${({ isFull }) => (isFull ? "100%" : "auto")}; */
   ${({ buttonType }) => {
     switch (buttonType) {
       case "Like":
