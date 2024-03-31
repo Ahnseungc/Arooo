@@ -1,5 +1,5 @@
 import { FC } from "react";
-import MainPageFooter from "@/component/organisms/Footer";
+import MainPageFooter from "@/component/organisms/MainPageFooter";
 import MainPageHeader from "@/component/organisms/MainPageHeader";
 import ContentBox from "@/component/organisms/ContentBox";
 import { MainPageLayout, MainPageList } from "./styles";
