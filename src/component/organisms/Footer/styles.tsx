@@ -9,6 +9,7 @@ export const MainPageFooterLayout = styled.footer`
   background-color: none;
   text-align: center;
   width: 100%;
+  height: 10vh;
   font-size: 13px;
 `;
 

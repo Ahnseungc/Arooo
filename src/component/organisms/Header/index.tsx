@@ -7,7 +7,7 @@ import { MainpageHeaderLayout, MainpageHeaderHr } from "./styles";
 //   extends HTMLProps<HTMLButtonElement>,
 //     LikeLayoutProps {}
 
-const MainPageHeader: FC<any> = () => {
+const Header: FC<any> = () => {
   return (
     <MainpageHeaderLayout>
       <Text TextType="MainPageTitle" Margin="40px 0 0 0">
@@ -18,4 +18,4 @@ const MainPageHeader: FC<any> = () => {
   );
 };
 
-export default MainPageHeader;
+export default Header;

@@ -11,7 +11,7 @@ export interface FooterProps
   extends HTMLProps<HTMLButtonElement>,
     MainPageFooterProps {}
 
-const MainPageFooter: FC<FooterProps> = () => {
+const Footer: FC<FooterProps> = () => {
   return (
     <MainPageFooterLayout>
       <MainpageFooterHr />
@@ -22,4 +22,4 @@ const MainPageFooter: FC<FooterProps> = () => {
   );
 };
 
-export default MainPageFooter;
+export default Footer;

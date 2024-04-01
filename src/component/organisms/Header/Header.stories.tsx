@@ -1,12 +1,12 @@
 import { StoryFn } from "@storybook/react";
-import MainPageHeader from "./index";
+import Header from "./index";
 
 export default {
   title: "MainPageHeader",
-  component: MainPageHeader,
+  component: Header,
 };
 
-const Template: StoryFn<any> = (args: any) => <MainPageHeader {...args} />;
+const Template: StoryFn<any> = (args: any) => <Header {...args} />;
 
 export const MainPageFooterOrganisms = Template.bind({});
 

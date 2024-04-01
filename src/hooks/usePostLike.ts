@@ -3,18 +3,21 @@ import { FC } from "react";
 
 interface PostLikeProps {
   id: string;
-  count: number;
+  Likes: number;
 }
 
-export const usePostLike: FC<PostLikeProps> = ({ id, count }) => {
+export const usePostLike: FC<PostLikeProps> = ({ id, Likes }) => {
   //데이터로 id와 현재 count 전송
 
   const Postdata = {
-    id: count,
+    id: Likes + 1,
   };
+  console.log(Postdata);
 
-  return axios
+  const testdata = axios
     .post(`http://localhost:3000//api/${id}/like`, Postdata)
     .then((res) => res.data)
     .catch((err) => console.log(err));
+
+  return testdata;
 };

@@ -26,7 +26,7 @@ const ContentBox: FC<ContentBoxProps> = ({ title, likes, id }) => {
           {title}
         </Link>
       </Text>
-      <Like TextType="Like" LikesCount={likes} />
+      <Like TextType="Like" Likes={likes} id={id} />
     </ContentBoxLayout>
   );
 };

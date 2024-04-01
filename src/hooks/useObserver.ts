@@ -8,7 +8,6 @@ const useObserver = (callback: Callback) => {
 
   useEffect(() => {
     if (!targetRef.current) return;
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

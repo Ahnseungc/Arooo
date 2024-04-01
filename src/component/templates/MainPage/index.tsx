@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
-import MainPageFooter from "@/component/organisms/MainPageFooter";
-import MainPageHeader from "@/component/organisms/MainPageHeader";
+import MainPageFooter from "@/component/organisms/Footer";
+import MainPageHeader from "@/component/organisms/Header";
 import ContentBox from "@/component/organisms/ContentBox";
 import { MainPageLayout, MainPageList } from "./styles";
 import { useCallback } from "react";
@@ -15,7 +15,7 @@ interface ContentProps {
   likes: number;
 }
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 3;
 
 const MainPage: FC = () => {
   //무한스크롤
@@ -31,28 +31,29 @@ const MainPage: FC = () => {
   }, []);
 
   const [targetRef] = useObserver(getPage);
+  const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
 
-  const { data, error, size, setSize } = useSWRInfinite(getKey, fetcher);
+  console.log(data);
 
   return (
     <MainPageLayout ref={scrollRef}>
-      <MainPageHeader />
       <section>
         <MainPageList>
           {data?.map((content) => {
-            return (
-              <ContentBox
-                title={content.title}
-                likes={content.likes}
-                id={content.id}
-                key={content.id}
-              />
-            );
+            return content.map((item: ContentProps) => {
+              return (
+                <ContentBox
+                  title={item.title}
+                  likes={item.likes}
+                  id={item.id}
+                  key={item.id}
+                />
+              );
+            });
           })}
         </MainPageList>
       </section>
       <div ref={targetRef} />
-      <MainPageFooter />
     </MainPageLayout>
   );
 };
