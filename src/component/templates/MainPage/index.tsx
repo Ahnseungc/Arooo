@@ -15,7 +15,7 @@ interface ContentProps {
   likes: number;
 }
 
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 10;
 
 const MainPage: FC = () => {
   //무한스크롤
@@ -24,16 +24,15 @@ const MainPage: FC = () => {
     return `http://localhost:3000//api/library/content?skip=${pageIndex}&limit=${PAGE_SIZE}`;
   }, []);
 
-  const scrollRef = useRef(null);
+  const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
   const getPage = useCallback(() => {
     if (!scrollRef.current) return;
     setSize((prev) => prev + 1);
   }, []);
+  const scrollRef = useRef(null);
 
+  //끝에 도달했을 때 감지
   const [targetRef] = useObserver(getPage);
-  const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
-
-  console.log(data);
 
   return (
     <MainPageLayout ref={scrollRef}>
