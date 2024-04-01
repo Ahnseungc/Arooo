@@ -11,20 +11,20 @@ const Template: StoryFn<TextProps> = (args: any) => <Text {...args} />;
 export const MainPageTitle = Template.bind({});
 
 MainPageTitle.args = {
-  TextType: "MainPageTitle",
+  texttype: "MainPageTitle",
   children: "메인 페이지 헤더",
 };
 
 export const DetailPageTitle = Template.bind({});
 
 DetailPageTitle.args = {
-  TextType: "DetailPageTitle",
+  texttype: "DetailPageTitle",
   children: "디테일 페이지 헤더",
 };
 
 export const ContentTitle = Template.bind({});
 
 ContentTitle.args = {
-  TextType: "ContentTitle",
+  texttype: "ContentTitle",
   children: "콘텐츠 헤더",
 };

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export interface LikeLayoutProps {
-  TextType: "Like";
+  texttype: "Like";
 }
 
 export const LikeStyles = css`
@@ -10,14 +10,12 @@ export const LikeStyles = css`
 
 export const LikeLayout = styled.div<LikeLayoutProps>`
   border: none;
-
   background-color: none;
-
   display: flex;
-  width: 300px;
+  width: 30vw;
   font-size: 13px;
-  ${({ TextType }) => {
-    switch (TextType) {
+  ${({ texttype }) => {
+    switch (texttype) {
       case "Like":
         return LikeStyles;
     }

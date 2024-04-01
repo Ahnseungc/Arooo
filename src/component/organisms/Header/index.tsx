@@ -10,7 +10,7 @@ import { MainpageHeaderLayout, MainpageHeaderHr } from "./styles";
 const Header: FC<any> = () => {
   return (
     <MainpageHeaderLayout>
-      <Text TextType="MainPageTitle" Margin="40px 0 0 0">
+      <Text texttype="MainPageTitle" margin="40px 0 0 0">
         The Arooo Assignment
       </Text>
       <MainpageHeaderHr />

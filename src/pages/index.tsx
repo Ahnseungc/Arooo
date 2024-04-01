@@ -1,5 +1,5 @@
 import Head from "next/head";
-import MainPage from "@/component/templates/MainPage";
+import MainPage from "@/component/templates/MainPageLayout";
 import type { GetServerSideProps, NextPage } from "next";
 import useSWR, { SWRConfig, unstable_serialize } from "swr";
 import { fetcher } from "@/util/fetcher";

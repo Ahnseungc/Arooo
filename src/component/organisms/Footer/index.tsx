@@ -15,7 +15,7 @@ const Footer: FC<FooterProps> = () => {
   return (
     <MainPageFooterLayout>
       <MainpageFooterHr />
-      <Text TextType="MainPageTitle" Margin="40px 0 40px 0">
+      <Text texttype="MainPageTitle" margin="40px 0 40px 0">
         Arooo
       </Text>
     </MainPageFooterLayout>

@@ -6,9 +6,9 @@ export interface TextProps
   extends HTMLProps<HTMLButtonElement>,
     TextLayoutProps {}
 
-const Text: FC<TextProps> = ({ children, TextType, Margin }) => {
+const Text: FC<TextProps> = ({ children, texttype, margin }) => {
   return (
-    <TextLayout Margin={Margin} TextType={TextType}>
+    <TextLayout margin={margin} texttype={texttype}>
       {children}
     </TextLayout>
   );

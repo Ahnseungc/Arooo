@@ -1,6 +1,4 @@
 import { FC, useState } from "react";
-import MainPageFooter from "@/component/organisms/Footer";
-import MainPageHeader from "@/component/organisms/Header";
 import ContentBox from "@/component/organisms/ContentBox";
 import { MainPageLayout, MainPageList } from "./styles";
 import { useCallback } from "react";

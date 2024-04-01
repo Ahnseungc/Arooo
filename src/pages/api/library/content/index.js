@@ -11,6 +11,13 @@ export default function handler(req, res) {
     { id: "5", title: "콘텐츠 타이틀", likes: 0 },
     { id: "6", title: "콘텐츠 타이틀", likes: 2 },
     { id: "7", title: "콘텐츠 타이틀", likes: 1 },
+    { id: "1", title: "콘텐츠 타이틀", likes: 1 },
+    { id: "2", title: "콘텐츠 타이틀", likes: 3 },
+    { id: "3", title: "콘텐츠 타이틀", likes: 0 },
+    { id: "4", title: "콘텐츠 타이틀", likes: 0 },
+    { id: "5", title: "콘텐츠 타이틀", likes: 0 },
+    { id: "6", title: "콘텐츠 타이틀", likes: 2 },
+    { id: "7", title: "콘텐츠 타이틀", likes: 1 },
 
     // 콘텐츠 데이터 예시. 데이터베이스나 외부 소스에서 가져온다.
   ];

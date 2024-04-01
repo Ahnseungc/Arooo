@@ -11,5 +11,5 @@ const Template: StoryFn<LikeProps> = (args: any) => <Like {...args} />;
 export const LikeMolecules = Template.bind({});
 
 LikeMolecules.args = {
-  TextType: "Like",
+  texttype: "Like",
 };
