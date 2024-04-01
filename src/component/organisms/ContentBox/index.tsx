@@ -9,18 +9,24 @@ import Link from "next/link";
 //   extends HTMLProps<HTMLButtonElement>,
 //     LikeLayoutProps {}
 
-const ContentBox: FC<any> = () => {
+interface ContentBoxProps {
+  title: string;
+  likes: number;
+  id: string;
+}
+
+const ContentBox: FC<ContentBoxProps> = ({ title, likes, id }) => {
   return (
     <ContentBoxLayout>
       <Text Margin="0" TextType="ContentTitle">
         <Link
-          href={"/1"}
+          href={`/${id}`}
           style={{ textDecoration: "none", color: "black", cursor: "pointer" }}
         >
-          콘텐츠 타이틀
+          {title}
         </Link>
       </Text>
-      <Like TextType="Like" />
+      <Like TextType="Like" LikesCount={likes} />
     </ContentBoxLayout>
   );
 };

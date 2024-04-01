@@ -5,20 +5,31 @@ import ContentBox from "@/component/organisms/ContentBox";
 import { MainPageLayout, MainPageList } from "./styles";
 import { useSWRConfig } from "swr";
 
+interface ContentProps {
+  id: string;
+  title: string;
+  likes: number;
+}
+
 const MainPage: FC<any> = () => {
-  const test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
   const { refreshInterval, mutate, cache } = useSWRConfig();
-
-  console.log(cache.get("http://localhost:3000//api/hello")?.data);
+  const Contents: ContentProps[] = cache.get("http://localhost:3000//api/hello")
+    ?.data;
 
   return (
     <MainPageLayout>
       <MainPageHeader />
       <section>
         <MainPageList>
-          {test.map(() => {
-            return <ContentBox />;
+          {Contents.map((content) => {
+            return (
+              <ContentBox
+                title={content.title}
+                likes={content.likes}
+                id={content.id}
+                key={content.id}
+              />
+            );
           })}
         </MainPageList>
       </section>
