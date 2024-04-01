@@ -3,15 +3,20 @@ import MainPage from "@/component/templates/MainPage";
 import type { GetServerSideProps, NextPage } from "next";
 import useSWR, { SWRConfig, unstable_serialize } from "swr";
 import { fetcher } from "@/util/fetcher";
+import useSWRInfinite from "swr/infinite";
+import { useCallback } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 interface Props {
   data: object;
 }
+const PAGE_SIZE = 10;
 
 const Home: NextPage<Props> = ({ fallback }: any) => {
-  const { data } = useSWR("http://localhost:3000//api/hello", fetcher, {
-    fallbackData: fallback,
-  });
+  // const { data } = useSWR("/api/library/content", fetcher, {
+  //   fallbackData: fallback,
+  // });
 
   return (
     <>
@@ -22,7 +27,7 @@ const Home: NextPage<Props> = ({ fallback }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <SWRConfig value={data}>
+        <SWRConfig>
           <MainPage />
         </SWRConfig>
       </main>
@@ -33,12 +38,12 @@ const Home: NextPage<Props> = ({ fallback }: any) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const content = await fetcher("http://localhost:3000//api/hello");
+  const content = await fetcher("http://localhost:3000//api/library/content");
 
   return {
     props: {
       fallback: {
-        content,
+        [unstable_serialize("/api/library/content")]: content,
       },
     },
   };
