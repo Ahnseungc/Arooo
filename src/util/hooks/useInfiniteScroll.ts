@@ -10,14 +10,12 @@ const useInfiniteScroll = (LIMITPAGEINDEX: number) => {
     return `${URL}?skip=${pageIndex}&limit=${LIMITPAGEINDEX}`;
   }, []);
 
-  const { data, error, setSize, mutate } = useSWRInfinite(getKey, fetcher, {
+  const { data, error, setSize } = useSWRInfinite(getKey, fetcher, {
     persistSize: false, // 페이지 크기를 1로 초기화 하지 않음
     initialSize: 1, // 초기 로드해야하는 페이지 수
   });
 
-  if (error) {
-    return error;
-  }
+  if (error) throw new Error(error);
 
   const onNext = () => {
     if (
@@ -25,7 +23,7 @@ const useInfiniteScroll = (LIMITPAGEINDEX: number) => {
         document.documentElement.clientHeight >=
       document.documentElement.scrollHeight
     ) {
-      setSize((p) => p + 1);
+      setSize((prevSize) => prevSize + 1);
     }
   };
 

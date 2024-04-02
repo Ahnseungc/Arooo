@@ -5,7 +5,7 @@ import { HTMLProps } from "react";
 export interface ButtonProps
   extends HTMLProps<HTMLButtonElement>,
     ButtonLayoutProps {
-  onClick?: () => void;
+  onClick?: () => object;
 }
 
 const Button: FC<ButtonProps> = ({ children, buttontype, onClick }) => {
