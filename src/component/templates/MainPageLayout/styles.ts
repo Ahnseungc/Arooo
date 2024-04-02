@@ -5,6 +5,7 @@ export const MainPageLayout = styled.div`
   height: 80vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow: scroll;
 `;
 

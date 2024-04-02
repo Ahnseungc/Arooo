@@ -1,26 +1,34 @@
-import { FC } from "react";
+import { FC, MutableRefObject } from "react";
 import ContentBox from "@/component/organisms/ContentBox";
 import { MainPageLayout, MainPageList } from "./styles";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { RefObject } from "react";
 
 interface ContentProps {
+  contents: {
+    scrollRef: MutableRefObject<null>;
+    targetRef: RefObject<HTMLDivElement>;
+    data: any[] | undefined;
+  };
+}
+
+interface ContentItemProps {
   id: string;
   title: string;
   likes: number;
 }
 
-const PAGE_SIZE: number = 10;
-const MainPage: FC = () => {
+const MainPage: FC<ContentProps> = ({ contents }) => {
   //무한스크롤
 
-  const InfiniteData = useInfiniteScroll(PAGE_SIZE);
+  console.log(contents);
 
   return (
-    <MainPageLayout ref={InfiniteData.scrollRef}>
+    <MainPageLayout ref={contents?.scrollRef}>
       <section>
         <MainPageList>
-          {InfiniteData.data?.map((content) => {
-            return content.map((item: ContentProps) => {
+          {contents?.data?.map((content) => {
+            return content.map((item: ContentItemProps) => {
               return (
                 <ContentBox
                   title={item.title}
@@ -33,7 +41,7 @@ const MainPage: FC = () => {
           })}
         </MainPageList>
       </section>
-      <div ref={InfiniteData.targetRef} />
+      <div ref={contents?.targetRef} />
     </MainPageLayout>
   );
 };

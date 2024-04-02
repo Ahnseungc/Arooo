@@ -12,4 +12,8 @@ export const ContentDetailBoxOrganisms = Template.bind({});
 
 ContentDetailBoxOrganisms.args = {
   texttype: "Like",
+  title: "타이틀",
+  likes: 3,
+  content: "콘텐츠",
+  id: "1",
 };

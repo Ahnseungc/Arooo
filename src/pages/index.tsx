@@ -6,6 +6,8 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { useEffect } from "react";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+const PAGE_SIZE: number = 10;
 
 const MainPage = dynamic(() => import("@/component/templates/MainPageLayout"), {
   suspense: true,
@@ -21,7 +23,8 @@ const Home: NextPage<Props> = ({ fallback }: any) => {
     fallbackData: fallback,
     suspense: true,
   });
-  
+  const InfiniteData = useInfiniteScroll(PAGE_SIZE);
+
   useEffect(() => {
     setReady(true);
   }, []);
@@ -37,7 +40,7 @@ const Home: NextPage<Props> = ({ fallback }: any) => {
       <main>
         <SWRConfig value={{ fallback }}>
           <Suspense fallback={<div>loading...</div>}>
-            <MainPage />
+            <MainPage contents={InfiniteData} />
           </Suspense>
         </SWRConfig>
       </main>
