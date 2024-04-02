@@ -9,9 +9,13 @@ export default {
 const Template: StoryFn<ButtonProps> = (args: any) => <Button {...args} />;
 
 export const Like = Template.bind({});
-
 Like.args = {
   buttontype: "Like",
+  children: "",
+};
 
+export const Next = Template.bind({});
+Next.args = {
+  buttontype: "Next",
   children: "",
 };

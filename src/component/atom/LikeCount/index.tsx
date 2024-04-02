@@ -3,7 +3,7 @@ import { LikeCountLayout, LikeCountLayoutProps } from "./styles";
 import { HTMLProps } from "react";
 
 export interface LikeCountProps
-  extends HTMLProps<HTMLButtonElement>,
+  extends HTMLProps<HTMLElement>,
     LikeCountLayoutProps {}
 
 const LikeCount: FC<LikeCountProps> = ({ children, $TextType }) => {

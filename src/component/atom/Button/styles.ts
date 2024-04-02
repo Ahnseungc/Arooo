@@ -2,8 +2,7 @@ import styled, { css } from "styled-components";
 import { MouseEventHandler } from "react";
 
 export interface ButtonLayoutProps {
-  buttontype: "Like";
-
+  buttontype: "Like" | "Next";
   onClick?: () => void;
 }
 
@@ -58,12 +57,22 @@ export const LikeButtonStyles = css`
   }
 `;
 
+export const NextButtonStyles = css`
+  width: 30%;
+  height: 5vh;
+  background-color: skyblue;
+  border-radius: 20px;
+  color: white;
+`;
+
 export const ButtonLayout = styled.button<ButtonLayoutProps>`
   border: none;
   ${({ buttontype }) => {
     switch (buttontype) {
       case "Like":
         return LikeButtonStyles;
+      case "Next":
+        return NextButtonStyles;
     }
   }}
 `;

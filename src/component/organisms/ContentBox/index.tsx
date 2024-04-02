@@ -5,10 +5,6 @@ import Like from "@/component/molecules/Like";
 import { ContentBoxLayout } from "./styles";
 import Link from "next/link";
 
-// export interface LikeProps
-//   extends HTMLProps<HTMLButtonElement>,
-//     LikeLayoutProps {}
-
 interface ContentBoxProps {
   title: string;
   likes: number;
@@ -26,6 +22,7 @@ const ContentBox: FC<ContentBoxProps> = ({ title, likes, id }) => {
           {title}
         </Link>
       </Text>
+
       <Like texttype="Like" likes={likes} id={id} />
     </ContentBoxLayout>
   );

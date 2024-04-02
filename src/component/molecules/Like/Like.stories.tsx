@@ -12,4 +12,5 @@ export const LikeMolecules = Template.bind({});
 
 LikeMolecules.args = {
   texttype: "Like",
+  likes: 3,
 };

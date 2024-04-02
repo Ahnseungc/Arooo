@@ -3,14 +3,14 @@ import { FooterProps } from "./index";
 import Footer from "./index";
 
 export default {
-  title: "MainPageFooter",
+  title: "Footer",
   component: Footer,
 };
 
 const Template: StoryFn<FooterProps> = (args: any) => <Footer {...args} />;
 
-export const MainPageFooterOrganisms = Template.bind({});
+export const FooterOrganisms = Template.bind({});
 
-MainPageFooterOrganisms.args = {
+FooterOrganisms.args = {
   //   TextType: "Like",
 };

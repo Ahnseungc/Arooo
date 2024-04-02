@@ -1,33 +1,14 @@
 import Head from "next/head";
-import type { GetServerSideProps, NextPage } from "next";
-import useSWR, { SWRConfig, unstable_serialize } from "swr";
-import { fetcher } from "@/util/fetcher";
-import { Suspense } from "react";
+import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { useState } from "react";
-import { useEffect } from "react";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import useInfiniteScroll from "@/util/hooks/useInfiniteScroll";
+const MainPageLayout = dynamic(
+  () => import("@/component/templates/MainPageLayout")
+);
 const PAGE_SIZE: number = 10;
 
-const MainPage = dynamic(() => import("@/component/templates/MainPageLayout"), {
-  suspense: true,
-});
-
-interface Props {
-  fallback: object;
-}
-
-const Home: NextPage<Props> = ({ fallback }: any) => {
-  const [ready, setReady] = useState(false);
-  const { data } = useSWR(ready && "/api/library/content", fetcher, {
-    fallbackData: fallback,
-    suspense: true,
-  });
+const Home: NextPage = () => {
   const InfiniteData = useInfiniteScroll(PAGE_SIZE);
-
-  useEffect(() => {
-    setReady(true);
-  }, []);
 
   return (
     <>
@@ -38,11 +19,7 @@ const Home: NextPage<Props> = ({ fallback }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <SWRConfig value={{ fallback }}>
-          <Suspense fallback={<div>loading...</div>}>
-            <MainPage contents={InfiniteData} />
-          </Suspense>
-        </SWRConfig>
+        <MainPageLayout data={InfiniteData} />
       </main>
     </>
   );
@@ -50,14 +27,14 @@ const Home: NextPage<Props> = ({ fallback }: any) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const content = await fetcher("http://localhost:3000//api/library/content");
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const content = await fetcher("http://localhost:3000//api/library/content");
 
-  return {
-    props: {
-      fallback: {
-        [unstable_serialize("/api/library/content")]: content,
-      },
-    },
-  };
-};
+//   return {
+//     props: {
+//       fallback: {
+//         [unstable_serialize("/api/library/content")]: content,
+//       },
+//     },
+//   };
+// };

@@ -14,18 +14,11 @@ export default function Home() {
   const [ready, setReady] = useState(false);
   const { data } = useSWR(
     ready && `http://localhost:3000//api/library/content/${Router}`,
-    fetcher,
-    { suspense: true }
+    fetcher
   );
   useEffect(() => {
     setReady(true);
   }, []);
 
-  return (
-    <SWRConfig>
-      <Suspense fallback={<div>...로딩</div>}>
-        {data && <DetailPage content={data} />}
-      </Suspense>
-    </SWRConfig>
-  );
+  return <SWRConfig>{data && <DetailPage content={data} />}</SWRConfig>;
 }

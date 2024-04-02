@@ -13,6 +13,6 @@ const Template: StoryFn<LikeCountProps> = (args: any) => (
 export const MainPageTitle = Template.bind({});
 
 MainPageTitle.args = {
-  TextType: "LikeCount",
+  $TextType: "LikeCount",
   children: "좋아요 수",
 };

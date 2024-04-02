@@ -1,14 +1,14 @@
-import { FC, MutableRefObject } from "react";
+import { FC, MutableRefObject, useState } from "react";
 import ContentBox from "@/component/organisms/ContentBox";
-import { MainPageLayout, MainPageList } from "./styles";
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { RefObject } from "react";
+import { MainPageLayout, MainPageList, MainPageSection } from "./styles";
+import Button from "@/component/atom/Button";
+import { useEffect } from "react";
+import { copyFileSync } from "fs";
 
 interface ContentProps {
-  contents: {
-    scrollRef: MutableRefObject<null>;
-    targetRef: RefObject<HTMLDivElement>;
-    data: any[] | undefined;
+  data: {
+    onNext: () => void;
+    data: Array<ContentItemProps>[] | undefined;
   };
 }
 
@@ -18,30 +18,36 @@ interface ContentItemProps {
   likes: number;
 }
 
-const MainPage: FC<ContentProps> = ({ contents }) => {
-  //무한스크롤
+const MainPage: FC<ContentProps> = ({ data }) => {
+  let contents = data.data?.flat();
+  let onScroll = data.onNext;
 
-  console.log(contents);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      window.addEventListener("scroll", onScroll);
+    }, 100);
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
   return (
-    <MainPageLayout ref={contents?.scrollRef}>
-      <section>
+    <MainPageLayout onScroll={onScroll}>
+      <MainPageSection>
         <MainPageList>
-          {contents?.data?.map((content) => {
-            return content.map((item: ContentItemProps) => {
-              return (
-                <ContentBox
-                  title={item.title}
-                  likes={item.likes}
-                  id={item.id}
-                  key={item.id}
-                />
-              );
-            });
+          {contents?.map((content) => {
+            return (
+              <ContentBox
+                title={content.title}
+                likes={content.likes}
+                id={content.id}
+                key={content.id}
+              />
+            );
           })}
         </MainPageList>
-      </section>
-      <div ref={contents?.targetRef} />
+      </MainPageSection>
     </MainPageLayout>
   );
 };

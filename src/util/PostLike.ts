@@ -11,10 +11,10 @@ const PostLike = async ({ id }: PostLikeProps) => {
       `http://localhost:3000//api/${id}/likes`
     ); //좋아요 증가
     mutate(`http://localhost:3000//api/${id}/likes`); // 데이터 갱신
-    return true;
+    return LikeCount;
   } catch (error) {
     console.log("Error!!!", error);
-    return false;
+    return error;
   }
 };
 

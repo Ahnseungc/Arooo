@@ -2,9 +2,7 @@ import { FC } from "react";
 import { TextLayout, TextLayoutProps } from "./styles";
 import { HTMLProps } from "react";
 
-export interface TextProps
-  extends HTMLProps<HTMLButtonElement>,
-    TextLayoutProps {}
+export interface TextProps extends HTMLProps<HTMLElement>, TextLayoutProps {}
 
 const Text: FC<TextProps> = ({ children, texttype, margin }) => {
   return (

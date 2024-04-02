@@ -7,7 +7,7 @@ export const MainpageHeaderLayout = styled.header`
   text-align: center;
   font-size: 13px;
   height: 10vh;
-
+  position: fixed;
   background-color: white;
   z-index: 1;
 `;

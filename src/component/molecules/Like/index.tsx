@@ -3,8 +3,9 @@ import { LikeLayout, LikeLayoutProps } from "./styles";
 import LikeCount from "@/component/atom/LikeCount";
 import Button from "@/component/atom/Button/index";
 import usePostLike from "@/util/PostLike";
+import { HTMLProps } from "react";
 
-export interface LikeProps extends LikeLayoutProps {
+export interface LikeProps extends HTMLProps<HTMLElement>, LikeLayoutProps {
   likes: number;
   id: string;
 }
