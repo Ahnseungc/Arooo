@@ -1,21 +1,38 @@
-const { describe, test, expect } = require("node:test");
-const PostLike = require("../src/util/PostLike");
+import axios from "axios";
+import { mutate } from "swr";
+import { PostLike } from "../src/util/PostLike";
 
-describe("좋아요 카운터", () => {
-  test("성공하면 true", () => {
-    const validID = ["abcd0123efgh456", "123efgh456abcd0", "gh456abcd0123ef"];
+jest.mock("axios");
+jest.mock("swr", () => ({
+  mutate: jest.fn(),
+}));
 
-    validID.forEach((Id) => {
-      expect(PostLike({ Id })).toBe(true);
-    });
+describe("PostLike", () => {
+  it("성공", async () => {
+    axios.post.mockResolvedValueOnce();
+
+    await PostLike({ id: "123" });
+
+    expect(axios.post).toHaveBeenCalledWith(
+      "http://localhost:3000//api/library/content123"
+    );
+
+    expect(mutate).toHaveBeenCalledWith(
+      "http://localhost:3000//api/library/content123"
+    );
   });
 
-  describe("좋아요 카운터", () => {
-    test("실패하면 error", () => {
-      const validID = ["1", "2", "3"];
-      validID.forEach((Id) => {
-        expect(PostLike(Id)).toBe(false);
-      });
-    });
+  it("실패", async () => {
+    axios.post.mockRejectedValueOnce();
+
+    const result = await PostLike({ id: "123" });
+
+    expect(axios.post).toHaveBeenCalledWith(
+      "http://localhost:3000//api/library/content123"
+    );
+
+    expect(mutate).not.toHaveBeenCalled();
+
+    expect(result).toBe(false);
   });
 });

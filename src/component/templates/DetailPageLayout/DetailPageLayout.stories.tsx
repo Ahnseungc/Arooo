@@ -11,10 +11,8 @@ const Template: StoryFn<any> = (args: any) => <DetailPage {...args} />;
 export const DetailPageOrganisms = Template.bind({});
 
 DetailPageOrganisms.args = {
-  content: {
-    texttype: "Like",
-    title: "테스트용",
-    content: "content",
-    id: "1",
-  },
+  texttype: "Like",
+  title: "테스트용",
+  content: "content",
+  id: "1",
 };

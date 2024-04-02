@@ -6,10 +6,16 @@ interface PostLikeProps {
   id: string;
 }
 
+const URL = process.env.REACT_APP_URL;
+
 const PostLike = async ({ id }: PostLikeProps) => {
   return await axios
-    .post(`http://localhost:3000//api/library/content${id}`)
-    .then(() => mutate(`http://localhost:3000//api/library/content${id}`))
+    .post(`${URL}/content${id}/like`)
+    .then((res) => {
+      console.log(res);
+      mutate(`${URL}/content${id}`);
+      mutate(`${URL}/content`);
+    })
     .catch((err) => console.log(err));
 };
 

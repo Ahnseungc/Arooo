@@ -1,12 +1,13 @@
 import { useCallback } from "react";
 import useSWRInfinite from "swr/infinite";
-import { mutate } from "swr";
 import { fetcher } from "@/util/fetcher";
+
+const URL = process.env.REACT_APP_URL;
 
 const useInfiniteScroll = (LIMITPAGEINDEX: number) => {
   const getKey = useCallback((pageIndex: number, previousPageData: any) => {
     if (previousPageData && !previousPageData.length) return null; //끝에 도달시 요청 하지 않음
-    return `http://localhost:3000//api/library/content?skip=${pageIndex}&limit=${LIMITPAGEINDEX}`;
+    return `${URL}?skip=${pageIndex}&limit=${LIMITPAGEINDEX}`;
   }, []);
 
   const { data, error, setSize, mutate } = useSWRInfinite(getKey, fetcher, {

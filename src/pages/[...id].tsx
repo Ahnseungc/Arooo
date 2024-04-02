@@ -9,6 +9,8 @@ const DetailPage = dynamic(
   {}
 );
 
+const URL = process.env.REACT_APP_URL;
+
 const ContentDetail: NextPage = () => {
   const router = useRouter();
   const id = router.asPath;
@@ -17,7 +19,7 @@ const ContentDetail: NextPage = () => {
     data: ContentItemProps,
     isLoading,
     error,
-  } = useSWR(`http://localhost:3000//api/library/content${id}`, fetcher);
+  } = useSWR(`${URL}${id}`, fetcher);
   if (isLoading) <div>...로딩중입니다.</div>;
   if (error) <div>에러입니다.</div>;
 
