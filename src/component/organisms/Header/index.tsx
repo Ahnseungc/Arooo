@@ -3,10 +3,6 @@ import { HTMLProps } from "react";
 import Text from "@/component/atom/Text";
 import { MainpageHeaderLayout, MainpageHeaderHr } from "./styles";
 
-// export interface LikeProps
-//   extends HTMLProps<HTMLButtonElement>,
-//     LikeLayoutProps {}
-
 const Header: FC<any> = () => {
   return (
     <MainpageHeaderLayout>
