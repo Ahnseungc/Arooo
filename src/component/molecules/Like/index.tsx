@@ -12,7 +12,7 @@ export interface LikeProps extends LikeLayoutProps {
 const Like: FC<LikeProps> = ({ texttype, likes, id }) => {
   return (
     <LikeLayout texttype={texttype}>
-      <Button buttonType="Like" onClick={() => usePostLike({ id })} />
+      <Button buttontype="Like" onClick={() => usePostLike({ id })} />
       <LikeCount $TextType="LikeCount">좋아요 수 {likes}</LikeCount>
     </LikeLayout>
   );

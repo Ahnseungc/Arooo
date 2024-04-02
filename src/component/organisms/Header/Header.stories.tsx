@@ -8,8 +8,8 @@ export default {
 
 const Template: StoryFn<any> = (args: any) => <Header {...args} />;
 
-export const MainPageFooterOrganisms = Template.bind({});
+export const MainPageHeaderOrganisms = Template.bind({});
 
-MainPageFooterOrganisms.args = {
+MainPageHeaderOrganisms.args = {
   //   TextType: "Like",
 };

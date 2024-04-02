@@ -21,6 +21,7 @@ const Home: NextPage<Props> = ({ fallback }: any) => {
     fallbackData: fallback,
     suspense: true,
   });
+  
   useEffect(() => {
     setReady(true);
   }, []);

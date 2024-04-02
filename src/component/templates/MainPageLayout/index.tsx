@@ -1,11 +1,6 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import ContentBox from "@/component/organisms/ContentBox";
 import { MainPageLayout, MainPageList } from "./styles";
-import { useCallback } from "react";
-import useSWRInfinite from "swr/infinite";
-import { fetcher } from "@/util/fetcher";
-import { useRef } from "react";
-import useObserver from "@/hooks/useObserver";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
 interface ContentProps {
@@ -17,7 +12,7 @@ interface ContentProps {
 const PAGE_SIZE: number = 10;
 const MainPage: FC = () => {
   //무한스크롤
-  
+
   const InfiniteData = useInfiniteScroll(PAGE_SIZE);
 
   return (

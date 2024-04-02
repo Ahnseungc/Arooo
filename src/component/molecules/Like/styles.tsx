@@ -12,7 +12,10 @@ export const LikeLayout = styled.div<LikeLayoutProps>`
   border: none;
   background-color: none;
   display: flex;
-  width: 30vw;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 5px;
+  width: 50%;
   font-size: 13px;
   ${({ texttype }) => {
     switch (texttype) {

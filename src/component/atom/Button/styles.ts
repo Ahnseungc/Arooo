@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 import { MouseEventHandler } from "react";
 
 export interface ButtonLayoutProps {
-  buttonType: "Like";
-  isFull?: boolean;
+  buttontype: "Like";
+
   onClick?: () => void;
 }
 
@@ -46,12 +46,22 @@ export const LikeButtonStyles = css`
   &:hover::after {
     background-color: red;
   }
+
+  &:active {
+    background-color: red;
+  }
+  &:active::before {
+    background-color: red;
+  }
+  &:active::after {
+    background-color: red;
+  }
 `;
 
 export const ButtonLayout = styled.button<ButtonLayoutProps>`
   border: none;
-  ${({ buttonType }) => {
-    switch (buttonType) {
+  ${({ buttontype }) => {
+    switch (buttontype) {
       case "Like":
         return LikeButtonStyles;
     }

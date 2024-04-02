@@ -11,7 +11,7 @@ const Template: StoryFn<ButtonProps> = (args: any) => <Button {...args} />;
 export const Like = Template.bind({});
 
 Like.args = {
-  buttonType: "Like",
-  isFull: false,
+  buttontype: "Like",
+
   children: "",
 };

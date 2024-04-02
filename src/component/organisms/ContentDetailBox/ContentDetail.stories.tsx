@@ -11,5 +11,5 @@ const Template: StoryFn<any> = (args: any) => <ContentDetailBox {...args} />;
 export const ContentDetailBoxOrganisms = Template.bind({});
 
 ContentDetailBoxOrganisms.args = {
-  //   TextType: "Like",
+  texttype: "Like",
 };

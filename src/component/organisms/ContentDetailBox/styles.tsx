@@ -16,11 +16,12 @@ export const ContentDetailBoxHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  padding: 5px;
 `;
 
 export const Content = styled.section`
   border: none;
-
   width: 100%;
   height: 50%;
   display: flex;

@@ -17,6 +17,8 @@ export const DetailPageTitleTextStyles = css`
 export const ContentTitleTextStyles = css`
   color: black;
   font-size: 12px;
+  width: 50%;
+  text-align: center;
 `;
 
 export const TextLayout = styled.h3<TextLayoutProps>`
