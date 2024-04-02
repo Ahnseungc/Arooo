@@ -1,24 +1,36 @@
-import { useRouter } from "next/router";
-
-import useSWR, { SWRConfig } from "swr";
-import { fetcher } from "@/util/fetcher";
+import { SWRConfig } from "swr";
 import dynamic from "next/dynamic";
-import { Suspense, useEffect, useState } from "react";
+import axios from "axios";
+import { NextPage } from "next";
 
-const DetailPage = dynamic(import("@/component/templates/DetailPageLayout"), {
-  suspense: true,
-});
+const DetailPage = dynamic(
+  import("@/component/templates/DetailPageLayout"),
+  {}
+);
 
-export default function Home() {
-  const Router = useRouter();
-  const [ready, setReady] = useState(false);
-  const { data } = useSWR(
-    ready && `http://localhost:3000//api/library/content/${Router}`,
-    fetcher
+interface fallbackProps {
+  fallback: {
+    title: string;
+    id: string;
+    likes: number;
+  };
+}
+
+const ContentDetail: NextPage<fallbackProps> = ({ fallback }) => {
+  return (
+    <SWRConfig value={{ refreshInterval: 3000, fallback }}>
+      <DetailPage />
+    </SWRConfig>
   );
-  useEffect(() => {
-    setReady(true);
-  }, []);
+};
+export default ContentDetail;
 
-  return <SWRConfig>{data && <DetailPage content={data} />}</SWRConfig>;
+export async function getServerSideProps(context: { params: { id: number } }) {
+  const apiUrl = `http://localhost:3000//api/library/content/${context.params.id}`;
+  const response = (await axios.get(apiUrl))?.data;
+  console.log(response);
+
+  return {
+    props: { fallback: response },
+  };
 }

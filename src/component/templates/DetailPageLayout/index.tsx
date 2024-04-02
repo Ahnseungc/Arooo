@@ -1,10 +1,7 @@
 import { FC } from "react";
 import { DetailPageLayout } from "./styles";
 import ContentDetailBox from "@/component/organisms/ContentDetailBox";
-
-interface ContentProps {
-  content: ContentItemProps;
-}
+import { useSWRConfig } from "swr";
 
 interface ContentItemProps {
   title: string;
@@ -13,7 +10,10 @@ interface ContentItemProps {
   id: string;
 }
 
-const DetailPage: FC<ContentProps> = ({ content }) => {
+const DetailPage: FC = () => {
+  const config = useSWRConfig();
+  const content = config.fallback;
+
   return (
     <DetailPageLayout>
       <ContentDetailBox
