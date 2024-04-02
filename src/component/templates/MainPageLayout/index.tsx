@@ -1,9 +1,7 @@
-import { FC, MutableRefObject, useState } from "react";
+import { FC } from "react";
 import ContentBox from "@/component/organisms/ContentBox";
 import { MainPageLayout, MainPageList, MainPageSection } from "./styles";
-import Button from "@/component/atom/Button";
 import { useEffect } from "react";
-import { copyFileSync } from "fs";
 
 interface ContentProps {
   data: {

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import dynamic from "next/dynamic";
 import useInfiniteScroll from "@/util/hooks/useInfiniteScroll";
 const MainPageLayout = dynamic(
@@ -26,15 +26,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const content = await fetcher("http://localhost:3000//api/library/content");
-
-//   return {
-//     props: {
-//       fallback: {
-//         [unstable_serialize("/api/library/content")]: content,
-//       },
-//     },
-//   };
-// };

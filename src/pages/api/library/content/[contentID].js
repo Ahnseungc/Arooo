@@ -4,7 +4,7 @@ export default function handler(req, res) {
   if (req.method === "GET") {
     // 콘텐츠 상세 정보를 가져오는 로직을 작성합니다.
     const content = {
-      id: contentId,
+      id: "contentId",
       title: "콘텐츠 타이틀",
       likes: 3,
       content: "콘텐츠 본문",

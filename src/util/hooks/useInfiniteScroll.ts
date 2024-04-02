@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import useSWRInfinite from "swr/infinite";
+import { mutate } from "swr";
 import { fetcher } from "@/util/fetcher";
 
 const useInfiniteScroll = (LIMITPAGEINDEX: number) => {
@@ -8,7 +9,7 @@ const useInfiniteScroll = (LIMITPAGEINDEX: number) => {
     return `http://localhost:3000//api/library/content?skip=${pageIndex}&limit=${LIMITPAGEINDEX}`;
   }, []);
 
-  const { data, error, setSize } = useSWRInfinite(getKey, fetcher, {
+  const { data, error, setSize, mutate } = useSWRInfinite(getKey, fetcher, {
     persistSize: false, // 페이지 크기를 1로 초기화 하지 않음
     initialSize: 1, // 초기 로드해야하는 페이지 수
   });

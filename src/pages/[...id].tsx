@@ -1,36 +1,35 @@
-import { SWRConfig } from "swr";
+import useSWR from "swr";
 import dynamic from "next/dynamic";
-import axios from "axios";
 import { NextPage } from "next";
+import { fetcher } from "@/util/fetcher";
+import { useRouter } from "next/router";
 
 const DetailPage = dynamic(
   import("@/component/templates/DetailPageLayout"),
   {}
 );
 
-interface fallbackProps {
-  fallback: {
-    title: string;
-    id: string;
-    likes: number;
-  };
-}
+const ContentDetail: NextPage = () => {
+  const router = useRouter();
+  const id = router.asPath;
 
-const ContentDetail: NextPage<fallbackProps> = ({ fallback }) => {
+  const {
+    data: ContentItemProps,
+    isLoading,
+    error,
+  } = useSWR(`http://localhost:3000//api/library/content${id}`, fetcher);
+  if (isLoading) <div>...로딩중입니다.</div>;
+  if (error) <div>에러입니다.</div>;
+
   return (
-    <SWRConfig value={{ refreshInterval: 3000, fallback }}>
-      <DetailPage />
-    </SWRConfig>
+    <div>
+      <DetailPage
+        title={ContentItemProps?.title}
+        likes={ContentItemProps?.likes}
+        content={ContentItemProps?.content}
+        id={ContentItemProps?.id}
+      />
+    </div>
   );
 };
 export default ContentDetail;
-
-export async function getServerSideProps(context: { params: { id: number } }) {
-  const apiUrl = `http://localhost:3000//api/library/content/${context.params.id}`;
-  const response = (await axios.get(apiUrl))?.data;
-  console.log(response);
-
-  return {
-    props: { fallback: response },
-  };
-}
