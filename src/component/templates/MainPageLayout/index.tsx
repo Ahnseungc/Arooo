@@ -6,6 +6,7 @@ import useSWRInfinite from "swr/infinite";
 import { fetcher } from "@/util/fetcher";
 import { useRef } from "react";
 import useObserver from "@/hooks/useObserver";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 
 interface ContentProps {
   id: string;
@@ -13,30 +14,21 @@ interface ContentProps {
   likes: number;
 }
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE: number = 10;
+
+//INfinitescroll hook으로 뺴자
+// 매개벼누 뭐필요해 ??
 
 const MainPage: FC = () => {
   //무한스크롤
-  const getKey = useCallback((pageIndex: number, previousPageData: any) => {
-    if (previousPageData && !previousPageData.length) return null;
-    return `http://localhost:3000//api/library/content?skip=${pageIndex}&limit=${PAGE_SIZE}`;
-  }, []);
 
-  const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
-  const getPage = useCallback(() => {
-    if (!scrollRef.current) return;
-    setSize((prev) => prev + 1);
-  }, []);
-  const scrollRef = useRef(null);
-
-  //끝에 도달했을 때 감지
-  const [targetRef] = useObserver(getPage);
+  const InfiniteData = useInfiniteScroll(PAGE_SIZE);
 
   return (
-    <MainPageLayout ref={scrollRef}>
+    <MainPageLayout ref={InfiniteData.scrollRef}>
       <section>
         <MainPageList>
-          {data?.map((content) => {
+          {InfiniteData.data?.map((content) => {
             return content.map((item: ContentProps) => {
               return (
                 <ContentBox
@@ -50,7 +42,7 @@ const MainPage: FC = () => {
           })}
         </MainPageList>
       </section>
-      <div ref={targetRef} />
+      <div ref={InfiniteData.targetRef} />
     </MainPageLayout>
   );
 };

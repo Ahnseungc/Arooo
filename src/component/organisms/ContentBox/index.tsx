@@ -18,7 +18,7 @@ interface ContentBoxProps {
 const ContentBox: FC<ContentBoxProps> = ({ title, likes, id }) => {
   return (
     <ContentBoxLayout>
-      <Text Margin="0" TextType="ContentTitle">
+      <Text margin="0" texttype="ContentTitle">
         <Link
           href={`/${id}`}
           style={{ textDecoration: "none", color: "black", cursor: "pointer" }}
@@ -26,7 +26,7 @@ const ContentBox: FC<ContentBoxProps> = ({ title, likes, id }) => {
           {title}
         </Link>
       </Text>
-      <Like TextType="Like" Likes={likes} id={id} />
+      <Like texttype="Like" likes={likes} id={id} />
     </ContentBoxLayout>
   );
 };

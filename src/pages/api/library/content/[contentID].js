@@ -6,7 +6,7 @@ export default function handler(req, res) {
     const content = {
       id: contentId,
       title: "콘텐츠 타이틀",
-      likes: 1,
+      likes: 3,
       content: "콘텐츠 본문",
     };
     res.status(200).json(content);
