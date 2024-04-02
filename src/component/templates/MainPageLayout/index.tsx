@@ -15,13 +15,9 @@ interface ContentProps {
 }
 
 const PAGE_SIZE: number = 10;
-
-//INfinitescroll hook으로 뺴자
-// 매개벼누 뭐필요해 ??
-
 const MainPage: FC = () => {
   //무한스크롤
-
+  
   const InfiniteData = useInfiniteScroll(PAGE_SIZE);
 
   return (

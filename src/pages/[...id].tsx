@@ -1,16 +1,31 @@
 import { useRouter } from "next/router";
-import DetailPage from "@/component/templates/DetailPageLayout";
+
 import useSWR, { SWRConfig } from "swr";
 import { fetcher } from "@/util/fetcher";
-import { GetServerSideProps } from "next";
-import { unstable_serialize } from "swr";
+import dynamic from "next/dynamic";
+import { Suspense, useEffect, useState } from "react";
+
+const DetailPage = dynamic(import("@/component/templates/DetailPageLayout"), {
+  suspense: true,
+});
 
 export default function Home() {
   const Router = useRouter();
+  const [ready, setReady] = useState(false);
   const { data } = useSWR(
-    `http://localhost:3000//api/library/content/${Router}`,
-    fetcher
+    ready && `http://localhost:3000//api/library/content/${Router}`,
+    fetcher,
+    { suspense: true }
   );
+  useEffect(() => {
+    setReady(true);
+  }, []);
 
-  return <SWRConfig>{data && <DetailPage content={data} />}</SWRConfig>;
+  return (
+    <SWRConfig>
+      <Suspense fallback={<div>...로딩</div>}>
+        {data && <DetailPage content={data} />}
+      </Suspense>
+    </SWRConfig>
+  );
 }

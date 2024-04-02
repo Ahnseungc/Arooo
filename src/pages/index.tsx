@@ -1,17 +1,29 @@
 import Head from "next/head";
-import MainPage from "@/component/templates/MainPageLayout";
 import type { GetServerSideProps, NextPage } from "next";
 import useSWR, { SWRConfig, unstable_serialize } from "swr";
 import { fetcher } from "@/util/fetcher";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+import { useState } from "react";
+import { useEffect } from "react";
+
+const MainPage = dynamic(() => import("@/component/templates/MainPageLayout"), {
+  suspense: true,
+});
 
 interface Props {
   fallback: object;
 }
 
 const Home: NextPage<Props> = ({ fallback }: any) => {
-  const { data } = useSWR("/api/library/content", fetcher, {
+  const [ready, setReady] = useState(false);
+  const { data } = useSWR(ready && "/api/library/content", fetcher, {
     fallbackData: fallback,
+    suspense: true,
   });
+  useEffect(() => {
+    setReady(true);
+  }, []);
 
   return (
     <>
@@ -23,7 +35,9 @@ const Home: NextPage<Props> = ({ fallback }: any) => {
       </Head>
       <main>
         <SWRConfig value={{ fallback }}>
-          <MainPage />
+          <Suspense fallback={<div>loading...</div>}>
+            <MainPage />
+          </Suspense>
         </SWRConfig>
       </main>
     </>
